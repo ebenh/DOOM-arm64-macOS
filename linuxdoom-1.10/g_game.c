@@ -1542,7 +1542,9 @@ void G_RecordDemo (char* name)
     demobuffer = Z_Malloc (maxsize,PU_STATIC,NULL); 
     demoend = demobuffer + maxsize;
 	
-    demorecording = true; 
+    demorecording = true;
+
+	printf ("Recording demo to file %s \n", demoname);
 } 
  
  

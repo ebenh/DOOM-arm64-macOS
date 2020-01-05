@@ -31,7 +31,7 @@ rcsid[] = "$Id: w_wad.c,v 1.5 1997/02/03 16:47:57 b1 Exp $";
 #include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
-#include <malloc.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <alloca.h>
@@ -371,7 +371,6 @@ int W_CheckNumForName (char* name)
 
     v1 = name8.x[0];
     v2 = name8.x[1];
-
 
     // scan backwards so patch lump files take precedence
     lump_p = lumpinfo + numlumps;

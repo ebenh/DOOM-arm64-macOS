@@ -46,7 +46,7 @@ int XShmGetEventBase( Display* dpy ); // problems with g++?
 #include <sys/socket.h>
 
 #include <netinet/in.h>
-#include <errnos.h>
+//#include <errnos.h>
 #include <signal.h>
 
 #include "doomstat.h"
@@ -804,6 +804,7 @@ void I_InitGraphics(void)
 
     attribs.colormap = X_cmap;
     attribs.border_pixel = 0;
+	attribs.override_redirect = true;
 
     // create the main window
     X_mainWindow = XCreateWindow(	X_display,
