@@ -2,9 +2,11 @@
 
 This is a fork of the origional DOOM source code for linux ported to run on macOS 10 for Intel based Macs.
 
+![Alt text](/ScreenShot.jpg?raw=true "DOOM Running on macOS High Sierra!")
+
 ## Requirements
 
-* You'll likely need a copy of xQuartz (http://xquartz.org/) 
+* You'll likely need a copy of xQuartz (http://xquartz.org/) if you're using a newer version of macOS.
 
 # Building the project
 
