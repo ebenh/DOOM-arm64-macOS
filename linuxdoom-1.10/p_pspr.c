@@ -245,6 +245,7 @@ boolean P_CheckAmmo (player_t* player)
 //
 void P_FireWeapon (player_t* player)
 {
+    printf("Weapon Fired!\n");
     statenum_t	newstate;
 	
     if (!P_CheckAmmo (player))

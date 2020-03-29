@@ -119,7 +119,12 @@ void I_Quit (void)
     I_ShutdownSound();
     I_ShutdownMusic();
     M_SaveDefaults ();
-    I_ShutdownGraphics();
+    
+    if(!nodisplay)
+    {
+        I_ShutdownGraphics();
+    }
+    
     exit(0);
 }
 
@@ -153,6 +158,9 @@ byte*	I_AllocLow(int length)
     return mem;
 }
 
+// No Display Mode
+extern  boolean	nodisplay;
+
 
 //
 // I_Error
@@ -177,7 +185,11 @@ void I_Error (char *error, ...)
 	G_CheckDemoStatus();
 
     D_QuitNetGame ();
-    I_ShutdownGraphics();
     
+    if(!nodisplay)
+    {
+        I_ShutdownGraphics();
+    }
+
     exit(-1);
 }

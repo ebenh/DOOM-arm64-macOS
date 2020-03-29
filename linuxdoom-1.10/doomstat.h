@@ -171,6 +171,8 @@ extern	int	totalsecret;
 extern  int	levelstarttic;	// gametic at level start
 extern  int	leveltime;	// tics in game play for par
 
+// Option to play doom with no display
+extern  boolean	nodisplay;
 
 
 // --------------------------------------
@@ -179,9 +181,13 @@ extern  int	leveltime;	// tics in game play for par
 // Disable save/end game?
 extern  boolean	usergame;
 
+// No Display Mode
+extern  boolean	nodisplay;
+
 //?
 extern  boolean	demoplayback;
 extern  boolean	demorecording;
+
 
 // Quit after playing a demo from cmdline.
 extern  boolean		singledemo;	

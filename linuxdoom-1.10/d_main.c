@@ -91,6 +91,7 @@ void D_DoomLoop (void);
 
 char*		wadfiles[MAXWADFILES];
 
+boolean		nodisplay;	// started game with -nodisplay
 
 boolean		devparm;	// started game with -devparm
 boolean         nomonsters;	// checkparm of -nomonsters
@@ -350,6 +351,7 @@ void D_Display (void)
 //  D_DoomLoop
 //
 extern  boolean         demorecording;
+extern  boolean         nodisplay;
 
 void D_DoomLoop (void)
 {
@@ -364,7 +366,10 @@ void D_DoomLoop (void)
 	debugfile = fopen (filename,"w");
     }
 	
-    I_InitGraphics ();
+	if(!nodisplay)
+	{
+    	I_InitGraphics ();
+	}
 
     while (1)
     {
@@ -391,8 +396,11 @@ void D_DoomLoop (void)
 		
 	S_UpdateSounds (players[consoleplayer].mo);// move positional sounds
 
-	// Update display, next frame, with current state.
-	D_Display ();
+	if(!nodisplay)
+	{
+		// Update display, next frame, with current state.
+		D_Display ();
+	}
 
 #ifndef SNDSERV
 	// Sound mixing for the buffer is snychronous.
@@ -1007,10 +1015,28 @@ void D_DoomMain (void)
 	autostart = true;
     }
     
-    // init subsystems
-    printf ("V_Init: allocate screens.\n");
-    V_Init ();
+	p = M_CheckParm ("-nodisplay");
+	if (p)
+    {
+		printf (
+	    "===========================================================================\n"
+	    "                          No Display mode enabled.!\n"
+	    "===========================================================================\n"
+		);
+		nodisplay = true;
+	}
+	else
+	{
+		nodisplay = false;
+	}
 
+	if(!nodisplay)
+	{
+		// init subsystems
+    	printf ("V_Init: allocate screens.\n");
+    	V_Init ();
+	}
+	
     printf ("M_LoadDefaults: Load system defaults.\n");
     M_LoadDefaults ();              // load before initing other systems
 

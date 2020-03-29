@@ -1,2 +1,9 @@
 
-linxdoom-1.10/linux
+
+linxdoom-1.10/linux/
+*.o
+*.wad
+
+.DS_Store
+/.vscode/
+/.DS_Store
