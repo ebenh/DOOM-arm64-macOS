@@ -6,7 +6,7 @@
 #
 CC=  gcc  # gcc or g++
 
-CFLAGS=-g -Wall -DNORMALUNIX -DLINUX -I/opt/homebrew/opt/libx11/include/ -I/opt/homebrew/opt/xorgproto/include/ -I/opt/homebrew/opt/libxext/include/ -m32 # -DUSEASM 
+CFLAGS=-ansi -g -Wall -DNORMALUNIX -DLINUX -I/opt/homebrew/opt/libx11/include/ -I/opt/homebrew/opt/xorgproto/include/ -I/opt/homebrew/opt/libxext/include/ -m32 # -DUSEASM 
 LDFLAGS=-L/usr/X11R6/lib
 LIBS=-lXext -lX11 -lm
 
