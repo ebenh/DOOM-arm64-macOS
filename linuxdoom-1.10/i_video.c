@@ -704,7 +704,7 @@ void I_InitGraphics(void)
     char		ysign=' ';
     
     int			oktodraw;
-    unsigned long	attribmask;
+    uint32_t	attribmask;
     XSetWindowAttributes attribs;
     XGCValues		xgcvalues;
     int			valuemask;

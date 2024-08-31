@@ -428,7 +428,7 @@ void R_InitPointToAngle (void)
     // UNUSED - now getting from tables.c
 #if 0
     int	i;
-    long	t;
+    int32_t	t;
     float	f;
 //
 // slope (tangent) to angle lookup
