@@ -479,13 +479,13 @@ void R_InitTextures (void)
     }
     numtextures = numtextures1 + numtextures2;
 	
-    textures = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecolumnlump = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecolumnofs = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecomposite = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecompositesize = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturewidthmask = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    textureheight = Z_Malloc (numtextures*4, PU_STATIC, 0);
+    textures = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    texturecolumnlump = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    texturecolumnofs = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    texturecomposite = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    texturecompositesize = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    texturewidthmask = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
+    textureheight = Z_Malloc (numtextures*sizeof(void*), PU_STATIC, 0);
 
     totalwidth = 0;
     
