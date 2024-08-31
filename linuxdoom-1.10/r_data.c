@@ -319,12 +319,10 @@ void R_GenerateLookup (int texnum)
     texture = textures[texnum];
 
     // Composited texture not created yet.
-    texturecomposite[texnum] = 0;
-     
+    texturecomposite[texnum] = 0;     
     texturecompositesize[texnum] = 0;
     collump = texturecolumnlump[texnum];
     colofs = texturecolumnofs[texnum];
-    
     // Now count the number of columns
     //  that are covered by more than one patch.
     // Fill in the lump / offset, so columns
