@@ -87,7 +87,17 @@ typedef struct
     boolean		masked;	
     short		width;
     short		height;
-    void		**columndirectory;	// OBSOLETE
+    /*
+    * NOTE: WAD files were originally authored on 32-bit systems, where the 
+    * columndirectory field is expected to be 32 bits wide. On 64-bit systems, 
+    * this field expands to 64 bits, causing misalignment and breaking things. 
+    * To maintain the correct behavior, we enforce a 32-bit width for this 
+    * field by replacing the void** type with int32_t. Since this field is not 
+    * used elsewhere in the code, this change should not introduce any issues.
+    * 
+    * - eben (eben@derso.org)
+    */
+    int32_t     columndirectory;	// OBSOLETE
     short		patchcount;
     mappatch_t	patches[1];
 } maptexture_t;
