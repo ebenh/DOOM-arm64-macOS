@@ -794,6 +794,8 @@ void I_InitGraphics(void)
     X_cmap = XCreateColormap(X_display, RootWindow(X_display,
 						   X_screen), X_visual, AllocAll);
 
+	XInstallColormap(X_display, X_cmap);
+
     // setup attributes for main window
     attribmask = CWEventMask | CWColormap | CWBorderPixel;
     attribs.event_mask =
