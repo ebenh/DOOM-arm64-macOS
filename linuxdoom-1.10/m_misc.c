@@ -392,7 +392,7 @@ void M_LoadDefaults (void)
 			    *defaults[i].location = parm;
 			else
 			    *defaults[i].location =
-				(int) newstring;
+				(uintptr_t) newstring;
 			break;
 		    }
 	    }
