@@ -14,5 +14,5 @@ This is a fork of the origional DOOM source code for linux ported to run on macO
 2. Create a directory for your build `mkdir linux`
 3. Compile your `make`
 4. Copy over a file `.wad` file.
-5. Run Doom with `./linuxdoom`
+5. Run Doom with `./doom.sh`
 
