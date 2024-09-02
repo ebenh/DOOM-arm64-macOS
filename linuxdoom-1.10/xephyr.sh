@@ -1,1 +1,1 @@
-xephyr :2 -ac -screen 320x200x8 &
+xephyr :2 -ac -screen 960x600x8 &
