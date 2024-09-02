@@ -6,8 +6,8 @@
 #
 CC=  gcc  # gcc or g++
 
-CFLAGS=-ansi -g -Wall -DNORMALUNIX -DLINUX -I/opt/homebrew/opt/libx11/include/ -I/opt/homebrew/opt/xorgproto/include/ -I/opt/homebrew/opt/libxext/include/ # -DUSEASM 
-LDFLAGS=-L/opt/homebrew/opt/libx11/lib -L/opt/homebrew/opt/libxcomposite/lib -L/opt/homebrew/opt/libxext/lib
+CFLAGS=-ansi -g -Wall -DNORMALUNIX -DLINUX -I/opt/X11/include -include stdint.h # -DUSEASM 
+LDFLAGS=-L/usr/X11R6/lib
 LIBS=-lXext -lX11 -lm
 
 # subdirectory for objects

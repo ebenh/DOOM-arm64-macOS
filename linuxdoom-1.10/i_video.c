@@ -686,7 +686,7 @@ void grabsharedmemory(int size)
   image->data = X_shminfo.shmaddr = shmat(id, 0, 0);
   
   fprintf(stderr, "shared memory id=%d, addr=0x%x\n", id,
-	  (int) (image->data));
+	  (uintptr_t) (image->data));
 }
 
 void I_InitGraphics(void)
@@ -704,7 +704,7 @@ void I_InitGraphics(void)
     char		ysign=' ';
     
     int			oktodraw;
-    unsigned long	attribmask;
+    uint32_t	attribmask;
     XSetWindowAttributes attribs;
     XGCValues		xgcvalues;
     int			valuemask;
@@ -793,6 +793,8 @@ void I_InitGraphics(void)
     // create the colormap
     X_cmap = XCreateColormap(X_display, RootWindow(X_display,
 						   X_screen), X_visual, AllocAll);
+
+	XInstallColormap(X_display, X_cmap);
 
     // setup attributes for main window
     attribmask = CWEventMask | CWColormap | CWBorderPixel;
@@ -987,13 +989,13 @@ Expand4
 	{
 	    fourpixels = lineptr[0];
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff0000)>>13) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff0000)>>13) );
 	    xline[0] = dpixel;
 	    xline[160] = dpixel;
 	    xline[320] = dpixel;
 	    xline[480] = dpixel;
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff)<<3 ) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff)<<3 ) );
 	    xline[1] = dpixel;
 	    xline[161] = dpixel;
 	    xline[321] = dpixel;
@@ -1001,13 +1003,13 @@ Expand4
 
 	    fourpixels = lineptr[1];
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff0000)>>13) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff0000)>>13) );
 	    xline[2] = dpixel;
 	    xline[162] = dpixel;
 	    xline[322] = dpixel;
 	    xline[482] = dpixel;
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff)<<3 ) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff)<<3 ) );
 	    xline[3] = dpixel;
 	    xline[163] = dpixel;
 	    xline[323] = dpixel;
@@ -1015,13 +1017,13 @@ Expand4
 
 	    fourpixels = lineptr[2];
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff0000)>>13) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff0000)>>13) );
 	    xline[4] = dpixel;
 	    xline[164] = dpixel;
 	    xline[324] = dpixel;
 	    xline[484] = dpixel;
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff)<<3 ) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff)<<3 ) );
 	    xline[5] = dpixel;
 	    xline[165] = dpixel;
 	    xline[325] = dpixel;
@@ -1029,13 +1031,13 @@ Expand4
 
 	    fourpixels = lineptr[3];
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff0000)>>13) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff0000)>>13) );
 	    xline[6] = dpixel;
 	    xline[166] = dpixel;
 	    xline[326] = dpixel;
 	    xline[486] = dpixel;
 			
-	    dpixel = *(double *)( (int)exp + ( (fourpixels&0xffff)<<3 ) );
+	    dpixel = *(double *)( (uintptr_t)exp + ( (fourpixels&0xffff)<<3 ) );
 	    xline[7] = dpixel;
 	    xline[167] = dpixel;
 	    xline[327] = dpixel;

@@ -87,7 +87,17 @@ typedef struct
     boolean		masked;	
     short		width;
     short		height;
-    void		**columndirectory;	// OBSOLETE
+    /*
+    * NOTE: WAD files were originally authored on 32-bit systems, where the 
+    * columndirectory field is expected to be 32 bits wide. On 64-bit systems, 
+    * this field expands to 64 bits, causing misalignment and breaking things. 
+    * To maintain the correct behavior, we enforce a 32-bit width for this 
+    * field by replacing the void** type with int32_t. Since this field is not 
+    * used elsewhere in the code, this change should not introduce any issues.
+    * 
+    * - eben (eben@derso.org)
+    */
+    int32_t     columndirectory;	// OBSOLETE
     short		patchcount;
     mappatch_t	patches[1];
 } maptexture_t;
@@ -479,13 +489,13 @@ void R_InitTextures (void)
     }
     numtextures = numtextures1 + numtextures2;
 	
-    textures = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecolumnlump = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecolumnofs = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecomposite = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturecompositesize = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    texturewidthmask = Z_Malloc (numtextures*4, PU_STATIC, 0);
-    textureheight = Z_Malloc (numtextures*4, PU_STATIC, 0);
+    textures = Z_Malloc (numtextures*sizeof(texture_t*), PU_STATIC, 0);
+    texturecolumnlump = Z_Malloc (numtextures*sizeof(short*), PU_STATIC, 0);
+    texturecolumnofs = Z_Malloc (numtextures*sizeof(unsigned short*), PU_STATIC, 0);
+    texturecomposite = Z_Malloc (numtextures*sizeof(byte*), PU_STATIC, 0);
+    texturecompositesize = Z_Malloc (numtextures*sizeof(int), PU_STATIC, 0);
+    texturewidthmask = Z_Malloc (numtextures*sizeof(int), PU_STATIC, 0);
+    textureheight = Z_Malloc (numtextures*sizeof(fixed_t), PU_STATIC, 0);
 
     totalwidth = 0;
     
@@ -639,7 +649,7 @@ void R_InitColormaps (void)
     lump = W_GetNumForName("COLORMAP"); 
     length = W_LumpLength (lump) + 255; 
     colormaps = Z_Malloc (length, PU_STATIC, 0); 
-    colormaps = (byte *)( ((int)colormaps + 255)&~0xff); 
+    colormaps = (byte *)( ((uintptr_t)colormaps + 255)&~0xff); 
     W_ReadLump (lump,colormaps); 
 }
 
