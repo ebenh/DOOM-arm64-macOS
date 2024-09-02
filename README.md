@@ -1,6 +1,6 @@
-# DOOM for x86 macOS
+# DOOM for arm64 macOS
 
-This is a fork of the origional DOOM source code for linux ported to run on macOS 10 for Intel based Macs.
+This is a fork of the origional DOOM source code for linux ported to run on macOS 10 for arm64 (i.e. Apple silicon)) based Macs.
 
 ![Alt text](/ScreenShot.jpg?raw=true "DOOM Running on macOS High Sierra!")
 
